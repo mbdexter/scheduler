@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	 version="3.0">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <context-param>
+        <param-name>quartz:config-file</param-name>
+        <param-value>quartz.properties</param-value>
+    </context-param>
+    <context-param>
+        <param-name>quartz:shutdown-on-unload</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>quartz:wait-on-shutdown</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>quartz:start-on-load</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <description>Workaround for Tomcat starting webapp twice</description>
+        <param-name>eraseOnExit</param-name>
+        <param-value>C:/xampp/tomcat/conf/Catalina/localhost/Scheduler.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>scheduler.QuartzListener</listener-class>
+    </listener>
+</web-app>
